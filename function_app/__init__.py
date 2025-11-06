@@ -1,5 +1,5 @@
 import azure.functions as func
-from .data_analysis import run_analysis
+from data_analysis import run_analysis
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
