@@ -1,14 +1,14 @@
 import azure.functions as func
-from .data_analysis import run_analysis
+from data_analysis import run_analysis
+import json
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     try:
-        # Call your main analysis function
-        run_analysis()
-
+        summary = run_analysis()
         return func.HttpResponse(
-            "Data processed and outputs uploaded to Azure Blob Storage.",
-            status_code=200
+            json.dumps(summary),
+            status_code=200,
+            mimetype="application/json"
         )
     except Exception as e:
         return func.HttpResponse(
