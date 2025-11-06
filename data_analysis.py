@@ -87,3 +87,19 @@ def run_analysis():
     plt.close()
 
     print("[INFO] Analysis complete and all outputs uploaded.")
+
+    #Return status and summary for testing endpoint
+    uploaded_files = [
+        "average_macros_by_diet.csv",
+        "top5_protein_recipes_by_diet.csv",
+        "processed_data_with_metrics.csv",
+        "avg_macros_bar_chart.png",
+        "macronutrient_heatmap.png",
+        "top5_protein_scatter.png"
+    ]
+
+    return {
+        "status": "success",
+        "rows_processed": len(df),
+        "uploaded_files": uploaded_files
+    }
